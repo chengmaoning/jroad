@@ -18,6 +18,7 @@ public class HelloWorldTest {
 
 	@Test
 	public void test() {
+		System.out.println("inside a test.");
 		assertTrue(true);
 	}
 
