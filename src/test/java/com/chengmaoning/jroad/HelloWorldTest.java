@@ -12,7 +12,7 @@ import org.junit.Test;
  * 
  * @author chengmaoning
  *
- *         2017年7月13日下午4:38:16
+ * 2017年7月13日下午4:38:16
  */
 public class HelloWorldTest {
 
