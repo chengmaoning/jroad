@@ -32,7 +32,6 @@ public class JdbcStudentDaoTest {
 	public void testFindAllStudents() {
 		List<Student> students = studentDao.findAllStudents();
 		System.out.println(students);
-
 		Assert.isTrue(true, null);
 	}
 
