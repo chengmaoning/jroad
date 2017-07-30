@@ -3,6 +3,7 @@
  */
 package com.chengmaoning.jroad.controller;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,13 @@ public class HelloWorldController {
 
 	@RequestMapping(path = "/hello", method = { RequestMethod.GET, RequestMethod.PUT })
 	public void hello(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			response.getWriter().println("hello world!");
+			response.getWriter().flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		LOGGER.info("hello world from a controller.");
 	}
 }
