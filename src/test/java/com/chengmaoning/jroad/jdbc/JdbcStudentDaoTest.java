@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 /**
  * @author chengmaoning
@@ -29,9 +30,10 @@ public class JdbcStudentDaoTest {
 	 */
 	@Test
 	public void testFindAllStudents() {
-
 		List<Student> students = studentDao.findAllStudents();
 		System.out.println(students);
+
+		Assert.isTrue(true, null);
 	}
 
 }
