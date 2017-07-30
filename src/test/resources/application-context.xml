@@ -23,8 +23,4 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-
-	<bean id="studentDao" class="com.chengmaoning.jroad.jdbc.JdbcStudentDao">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
 </beans>
