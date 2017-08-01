@@ -5,12 +5,7 @@ package com.chengmaoning.jroad;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Test;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * HelloWorldTest.java
