@@ -5,5 +5,7 @@ import java.util.List;
 public interface StudentDao {
 
 	List<Student> findAllStudents();
+	
+	Student findById(long id);
 
 }

@@ -24,10 +24,12 @@ public class JdbcStudentDao implements StudentDao {
 
 	private JdbcTemplate jdbcTemplate;
 
+
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
 
 	@Override
 	public List<Student> findAllStudents() {
@@ -53,6 +55,12 @@ public class JdbcStudentDao implements StudentDao {
 		});
 
 		return students;
+	}
+
+	@Override
+	public Student findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
