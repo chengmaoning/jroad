@@ -3,8 +3,6 @@
  */
 package com.chengmaoning.jroad.jdbc;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -39,6 +37,18 @@ public class NamedParameterJdbcTeacherDaoTest {
 
 		System.out.println(teachers);
 
+	}
+
+	@Test
+	public void testInsert() {
+		Teacher teacher = new Teacher();
+		teacher.setAge(30);
+		teacher.setName("Jack");
+		teacher.setSex("male");
+
+		long id = teacherDao.insert(teacher);
+
+		System.out.println("id: " + id);
 	}
 
 }

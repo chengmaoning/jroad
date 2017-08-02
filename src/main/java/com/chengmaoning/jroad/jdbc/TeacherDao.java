@@ -11,5 +11,7 @@ import java.util.List;
  */
 public interface TeacherDao {
 
-	List<Teacher> findByNameAndAge(String name,int age);
+	List<Teacher> findByNameAndAge(String name, int age);
+
+	long insert(Teacher teacher);
 }

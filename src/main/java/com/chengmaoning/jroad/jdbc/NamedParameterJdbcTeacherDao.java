@@ -14,6 +14,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -52,6 +54,21 @@ public class NamedParameterJdbcTeacherDao implements TeacherDao {
 		});
 
 		return teachers;
+	}
+
+	@Override
+	public long insert(Teacher teacher) {
+
+		String sql = "insert into teacher (name, age, sex) values (':name',:age,':sex')";
+
+		SqlParameterSource paramSource = new MapSqlParameterSource("name", teacher.getName())
+				.addValue("age", Integer.valueOf(teacher.getAge())).addValue("sex", teacher.getSex());
+
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+
+		namedParameterJdbcTemplate.update(sql, paramSource, keyHolder);
+
+		return keyHolder.getKey().intValue();
 	}
 
 }
