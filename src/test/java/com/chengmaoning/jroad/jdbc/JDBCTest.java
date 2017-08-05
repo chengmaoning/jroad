@@ -3,15 +3,6 @@
  */
 package com.chengmaoning.jroad.jdbc;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Writer;
-import java.sql.Blob;
-import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -23,8 +14,6 @@ import java.sql.Statement;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
-
-import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
@@ -126,8 +115,13 @@ public class JDBCTest {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		} finally {
 			try {
 				connection.setAutoCommit(true);
