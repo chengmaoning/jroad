@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.chengmaoning.jroad.jdbc;
+package com.chengmaoning.jroad.jdbc.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,13 +18,16 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import com.chengmaoning.jroad.jdbc.dao.TeacherDao;
+import com.chengmaoning.jroad.jdbc.dataobject.Teacher;
+
 /**
  * @author chengmaoning
  *
  */
 
 @Repository
-public class NamedParameterJdbcTeacherDao implements TeacherDao {
+public class TeacherDaoImpl implements TeacherDao {
 
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -59,7 +62,7 @@ public class NamedParameterJdbcTeacherDao implements TeacherDao {
 	@Override
 	public long insert(Teacher teacher) {
 
-		String sql = "insert into teacher (name, age, sex) values (':name',:age,':sex')";
+		String sql = "insert into teacher (name, age, sex) values (:name,:age,:sex)";
 
 		SqlParameterSource paramSource = new MapSqlParameterSource("name", teacher.getName())
 				.addValue("age", Integer.valueOf(teacher.getAge())).addValue("sex", teacher.getSex());
