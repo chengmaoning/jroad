@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,8 @@ import com.chengmaoning.jroad.jdbc.dataobject.Student;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:application-context.xml")
-@Transactional(value = "txManager")
+@Transactional(value = "txManager", rollbackFor = { Exception.class })
+@Rollback(true)
 public class StudentDaoImplTest {
 
 	@Autowired
@@ -60,4 +62,16 @@ public class StudentDaoImplTest {
 		System.out.println(updateCounts[0] + ", " + updateCounts[1]);
 	}
 
+	@Test
+	public void testBatchInsert() {
+		List<Student> students = new ArrayList<>();
+		for (int i = 0; i < 2; i++) {
+			Student student = new Student();
+			student.setName("student_" + i);
+			student.setId(8 + i);
+			students.add(student);
+		}
+		List<Long> ids = studentDao.batchInsert(students);
+		System.out.println(ids);
+	}
 }

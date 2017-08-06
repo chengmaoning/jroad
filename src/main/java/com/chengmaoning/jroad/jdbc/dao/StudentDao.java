@@ -17,4 +17,11 @@ public interface StudentDao {
 	 */
 	int[] batchUpdate(List<Student> students);
 
+	/**
+	 * 
+	 * @param students
+	 * @return
+	 */
+	List<Long> batchInsert(List<Student> students);
+
 }
