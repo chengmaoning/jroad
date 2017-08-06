@@ -10,5 +10,11 @@ public interface StudentDao {
 
 	Student findById(long id);
 
+	/**
+	 * 
+	 * @param students
+	 * @return
+	 */
+	int[] batchUpdate(List<Student> students);
 
 }

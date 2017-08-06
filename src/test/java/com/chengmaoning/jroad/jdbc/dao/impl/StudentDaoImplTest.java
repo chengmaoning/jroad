@@ -3,6 +3,7 @@
  */
 package com.chengmaoning.jroad.jdbc.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -44,6 +45,19 @@ public class StudentDaoImplTest {
 	public void testFindById() {
 		Student student = studentDao.findById(8);
 		System.out.println(student);
+	}
+
+	@Test
+	public void testBatchUpdate() {
+		List<Student> students = new ArrayList<>();
+		for (int i = 0; i < 2; i++) {
+			Student student = new Student();
+			student.setName("student_" + i);
+			student.setId(8 + i);
+			students.add(student);
+		}
+		int[] updateCounts = studentDao.batchUpdate(students);
+		System.out.println(updateCounts[0] + ", " + updateCounts[1]);
 	}
 
 }
