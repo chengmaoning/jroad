@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.chengmaoning.jroad.jdbc;
+package com.chengmaoning.jroad.jdbc.dataobject;
 
 /**
  * @author chengmaoning
