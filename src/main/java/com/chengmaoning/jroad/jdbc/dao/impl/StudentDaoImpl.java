@@ -112,7 +112,7 @@ public class StudentDaoImpl implements StudentDao {
 			e.printStackTrace();
 		} finally {
 			/**
-			 * 不必手动关闭connection，测试框架会在扫尾工作中关闭connection
+			 * 不必手动关闭connection，测试框架会在扫尾工作中关闭connection,否则，测试框架会报错
 			 */
 			// if (connection != null) {
 			// try {
