@@ -25,14 +25,15 @@ public class HelloWorldTest {
 		assertTrue(true);
 		
 		
-		List<String> list = Arrays.asList("1","2");
+		List<String> expOrderIds = Arrays.asList("1");
 		
-		StringBuffer sb = new StringBuffer();
-        for (int i = 0; i <list.size(); i++) {
-            sb.append(list.get(i)).append(",");
+		StringBuffer sb = new StringBuffer("(");
+        for(String order: expOrderIds){
+            sb.append("'").append(order).append("',");
         }
-        String expOrderIdStr =  sb.deleteCharAt(sb.length()-1).toString();
-		System.out.println(expOrderIdStr);
+        sb.deleteCharAt(sb.length()-1).append(")");
+        
+        System.out.println(sb.toString());
 	}
 
 }
