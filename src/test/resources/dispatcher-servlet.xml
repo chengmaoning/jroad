@@ -11,4 +11,9 @@
 
 	<!-- ... -->
 
+	<context:component-scan base-package="com.chengmaoning.jroad">
+		<context:include-filter type="annotation"
+			expression="org.springframework.web.servlet.mvc.Controller" />
+	</context:component-scan>
+
 </beans>
