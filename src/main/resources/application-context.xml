@@ -20,6 +20,11 @@
 			expression="org.springframework.web.servlet.mvc.Controller" />
 	</context:component-scan>
 
+
+	<bean class="com.chengmaoning.jroad.model.TestBean" scope="request">
+		<aop:scoped-proxy />
+	</bean>
+
 	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
