@@ -14,9 +14,10 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd"
 	default-autowire="byName">
 
+	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+	
 	<context:component-scan base-package="com.chengmaoning.jroad"></context:component-scan>
 
-	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"></property>

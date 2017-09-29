@@ -30,7 +30,7 @@ public class HelloWorldController {
 	@RequestMapping(path = "/hello", method = { RequestMethod.GET, RequestMethod.PUT })
 	public void hello(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			response.getWriter().println("<p>in side hello world controller!</p>");
+			response.getWriter().println("<p>inside hello world controller!</p>");
 			response.getWriter().flush();
 		} catch (IOException e) {
 			e.printStackTrace();
