@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+
+	<script type="text/javascript">
+	function myFunction(){
+		x = document.getElementById("demo");
+		x.innerHTML = "Hello JavaScript!";
+	}
+
+	function judge(){
+		var x = document.getElementById("text").value;
+		if (x == '' || isNaN(x)) {
+			alert('Not Numeric')
+		}
+	}
+</script>
+</head>
+<body>
+
+<p>JavaScript 能够直接写入 HTML 输出流中：</p>
+<script>
+	document.write("<h1>This is a heading</h1>")
+	document.write("<p>This is a paragraph</p>")
+	var i;
+	var cars = new Array();
+	cars[0] = 'Audi';
+	cars[1] = 'BMW';
+	cars[2] = 'Volvo';
+
+	var person = {
+		firstname: "Bill",
+		lastname: "Gates",
+		id: 5566,
+	};
+
+	for (var i = cars.length - 1; i >= 0; i--) {
+		document.write( cars[i] + "<br/>");
+	}
+
+	document.write(person.firstname + "<br/>");
+	document.write(person["lastname"] + "<br/>");
+
+	var b = new Boolean;
+
+	document.write("b: " + b + "<br/>");
+
+	function myFunction(name, job){
+		alert("Welcome " + name + ", the " + job);
+	}
+
+
+	function testTime(){
+		var x = "";
+		var time = new Date().getHours();
+		if (time >20) {
+			x = "Good Evening!";
+		}
+		document.getElementById("demo").innerHTML = x;
+	}
+
+	function throwException(){
+		var text = "";
+		try{
+			throw "Welcome guest!";
+		}catch(err){
+			text += "Error.\n\n";
+			text += "Desc: " + err.message + "\n\n";
+			text += "Continue. \n\n";
+			alert(text);
+		}
+	}
+</script>
+
+<button type="button" onclick="myFunction('Bill Gates', 'CEO')">Welcome</button>
+
+<p>
+您只能在 HTML 输出流中使用 <strong>document.write</strong>。
+如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。
+</p>
+
+<button type="button" onclick="throwException()">Click me!</button>
+
+<p id="demo">
+JavaScript 能改变 HTML 元素的内容。
+</p>
+
+
+
+<input type="text" id="text" name="text">
+<button type="button" onclick="judge()">Submit</button>
+
+
+</body>
+</html>

@@ -3,21 +3,15 @@
  */
 package com.chengmaoning.jroad;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-import java.util.Arrays;
-import java.util.List;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
-/**
- * HelloWorldTest.java
- * 
- * @author chengmaoning
- *
- * 2017年7月13日下午4:38:16
- */
 public class HelloWorldTest {
+
+	private static final Log logger = LogFactory.getLog(HelloWorldTest.class);
 
 	@Test
 	public void test() {
@@ -25,6 +19,15 @@ public class HelloWorldTest {
 		assertTrue(true);
 		
 		String errMsg = "hello\nworld.";
+		
+		System.out.println( errMsg.indexOf("\n"));
+		
+		System.out.println(errMsg.substring(0, errMsg.indexOf("\n")));
+
+		logger.debug("debug...");
+		logger.info("info...");
+		logger.warn("warn...");
+		logger.error("error...");
 	}
 
 }
