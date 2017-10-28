@@ -4,6 +4,8 @@
 package com.chengmaoning.jroad.controller;
 
 import java.io.IOException;
+import java.net.URLClassLoader;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,5 +39,7 @@ public class HelloWorldController {
 		}
 		logger.info("hello world from a controller.");
 		logger.error("error ...");
+
+		System.out.println(Arrays.toString(((URLClassLoader) this.getClass().getClassLoader()).getURLs()));
 	}
 }

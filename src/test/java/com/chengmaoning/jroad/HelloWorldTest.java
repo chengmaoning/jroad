@@ -28,6 +28,11 @@ public class HelloWorldTest {
 		logger.info("info...");
 		logger.warn("warn...");
 		logger.error("error...");
+		
+		System.out.println(System.getProperty("java.class.path"));
+		
+		System.out.println(System.getProperty("java.ext.dirs"));
+
 	}
 
 }
