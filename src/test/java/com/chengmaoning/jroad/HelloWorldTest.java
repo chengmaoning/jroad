@@ -5,6 +5,8 @@ package com.chengmaoning.jroad;
 
 import static org.junit.Assert.*;
 
+import java.net.URL;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -33,6 +35,21 @@ public class HelloWorldTest {
 		
 		System.out.println(System.getProperty("java.ext.dirs"));
 
+		ClassLoader c = getClass().getClassLoader();
+		logger.info(c);
+		ClassLoader c1 = c.getParent();
+		logger.info(c1);
+		ClassLoader c2 = c1.getParent();
+		logger.info(c2);
+		
+		@SuppressWarnings("restriction")
+		URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
+		for (int i = 0; i < urls.length; i++) {
+			logger.info(urls[i].toExternalForm());
+		}
+		
+		logger.info(System.getProperty("sun.boot.class.path"));
+		
 	}
 
 }
