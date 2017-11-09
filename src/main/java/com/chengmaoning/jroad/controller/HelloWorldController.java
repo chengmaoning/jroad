@@ -37,5 +37,9 @@ public class HelloWorldController {
 		}
 		logger.info("hello world from a controller.");
 		logger.error("error ...");
+		logger.info("requestURI: " + request.getRequestURI());
+		logger.info("contextPath: " + request.getContextPath() );
+		logger.info("servletPath: " + request.getServletPath());
+		logger.info("pathInfo: " + request.getPathInfo());
 	}
 }

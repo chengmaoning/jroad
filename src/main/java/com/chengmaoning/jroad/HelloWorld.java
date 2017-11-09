@@ -28,6 +28,8 @@ public class HelloWorld {
 		System.out.println("hello world!");
 
 		test(Arrays.asList("hello", "world"));
+		
+		logger.error("this is log text.");
 
 		System.out.println(System.getProperty("java.home"));
 	}
