@@ -31,6 +31,10 @@ public class HelloWorldTest {
 		logger.warn("warn...");
 		logger.error("error...");
 		
+		System.out.println(System.getProperty("java.class.path"));
+		
+		System.out.println(System.getProperty("java.ext.dirs"));
+
 		ClassLoader c = getClass().getClassLoader();
 		logger.info(c);
 		ClassLoader c1 = c.getParent();
