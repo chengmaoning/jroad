@@ -6,6 +6,8 @@ package com.chengmaoning.jroad;
 import static org.junit.Assert.*;
 
 import java.net.URL;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -68,6 +70,15 @@ public class HelloWorldTest {
 				logger.info(array.get(i) + ": odd.");
 			}
 		}
+	}
+
+	@Test
+	public void testDateTime() {
+		final ZonedDateTime zonedDateTime = ZonedDateTime.now();
+		final ZonedDateTime zonedDateTimeFromZone = ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
+
+		System.out.println(zonedDateTime);
+		System.out.println(zonedDateTimeFromZone);
 	}
 
 }
