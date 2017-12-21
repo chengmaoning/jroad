@@ -20,6 +20,7 @@ import org.apache.commons.logging.LogFactory;
 public class HelloWorld {
 
 	private static final Log logger = LogFactory.getLog(HelloWorld.class);
+
 	/**
 	 * @param args
 	 */
@@ -27,12 +28,15 @@ public class HelloWorld {
 		System.out.println("hello world!");
 
 		test(Arrays.asList("hello", "world"));
-		
+
 		logger.error("this is log text.");
 
 		System.out.println(System.getProperty("java.home"));
 
 		logger.error("this is log text.");
+
+		System.out.println("-900".startsWith("-"));
+		System.out.println(Arrays.toString(args));
 	}
 
 	public static void test(List<String> strings) {
