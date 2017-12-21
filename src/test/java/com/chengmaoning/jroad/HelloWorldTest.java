@@ -6,9 +6,12 @@ package com.chengmaoning.jroad;
 import static org.junit.Assert.*;
 
 import java.net.URL;
-import java.util.ArrayList;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -56,26 +59,28 @@ public class HelloWorldTest {
 	}
 
 	@Test
-	public void testLambda() {
-		List<String> names = new ArrayList<>();
-		names.add("Taobao");
-		names.add("ZhiFuBao");
 
-		List<String> lowerCaseNames = names.stream().map(name -> {
-			return name.toLowerCase();
-		}).collect(Collectors.toList());
+	public void test_functoin() {
+		List<Integer> array = Arrays.asList(3, 25, 5, 2, 8, 9, 6, 10);
 
-		logger.info("lowerCaseNames: " + lowerCaseNames);
+		Predicate<Integer> predicate = n -> n % 2 == 0;
+
+		for (int i = 0; i < array.size(); i++) {
+			if (predicate.test(array.get(i))) {
+				logger.info(array.get(i) + ": even.");
+			} else {
+				logger.info(array.get(i) + ": odd.");
+			}
+		}
 	}
 
 	@Test
-	public void testLambda2() {
-		MathOperation mathOperation = (a, b) -> a + b;
-		logger.info("mathOperation: " + mathOperation.operation(4, 5));
-	}
+	public void testDateTime() {
+		final ZonedDateTime zonedDateTime = ZonedDateTime.now();
+		final ZonedDateTime zonedDateTimeFromZone = ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
 
-	interface MathOperation {
-		int operation(int a, int b);
+		System.out.println(zonedDateTime);
+		System.out.println(zonedDateTimeFromZone);
 	}
 
 }
