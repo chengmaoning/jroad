@@ -17,7 +17,7 @@
 
 	<context:component-scan base-package="com.chengmaoning.jroad" />
 
-	<aop:aspectj-autoproxy />
+	<!-- <aop:aspectj-autoproxy />
 
 	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
 
@@ -33,6 +33,6 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<tx:annotation-driven transaction-manager="txManager" />
+	<tx:annotation-driven transaction-manager="txManager" /> -->
 
 </beans>
