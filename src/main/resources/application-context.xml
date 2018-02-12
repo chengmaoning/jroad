@@ -23,6 +23,9 @@
 
 	<aop:aspectj-autoproxy />
 
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+
 	<!-- <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder> -->
 
 

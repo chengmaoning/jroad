@@ -4,14 +4,8 @@
 package com.chengmaoning.jroad.servlet;
 
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,63 +27,57 @@ public class TestServlet extends HttpServlet {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest,
-	 * javax.servlet.http.HttpServletResponse)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.
+	 * HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("entering TestServlet");
-		ServletConfig config = getServletConfig();
-		Enumeration<String> paramEnumeration = config.getInitParameterNames();
-		while (paramEnumeration.hasMoreElements()) {
-			String name = (String) paramEnumeration.nextElement();
-			System.out.println("init params: " + name + " - " + config.getInitParameter(name));
-		}
-		System.out.println(config.getServletName());
+		System.out.println("context path: " + req.getContextPath());
+		System.out.println("reqeust uri: " + req.getRequestURI());
+		System.out.println("remaining path: " + getRemainingPath(req.getRequestURI(), req.getContextPath(), true));
 
-		ServletContext context = config.getServletContext();
-		Enumeration<String> attributeEnumeration = context.getAttributeNames();
-		while (attributeEnumeration.hasMoreElements()) {
-			String attributeName = (String) attributeEnumeration.nextElement();
-			System.out.println("attrbite: " + attributeName);
-		}
-
-		Enumeration<String> enumeration = context.getInitParameterNames();
-		while (enumeration.hasMoreElements()) {
-			String param = (String) enumeration.nextElement();
-			System.out.println(param);
-		}
-
-		System.out.println(
-				"major version: " + context.getMajorVersion() + ", minor version: " + context.getMinorVersion());
-		System.out.println("effective majar version: " + context.getEffectiveMajorVersion()
-				+ ", effective minor version: " + context.getEffectiveMinorVersion());
-		System.out.println(context.getResourcePaths("/META-INF/"));
-		System.out.println(context.getResource("/META-INF/MANIFEST.MF").toString());
-		System.out.println("server info: " + context.getServerInfo());
-		System.out.println("servlet context name: " + context.getServletContextName());
-		
-		ServletRegistration registration =  context.getServletRegistration("testServlet");
-		System.out.println(registration.getClassName());
-		System.out.println(registration.getInitParameter("msg"));
-		System.out.println(registration.getName());
-		System.out.println(registration.getRunAsRole());
-		System.out.println(registration.getMappings().toString());
-		System.out.println("context path: " + context.getContextPath());
-		System.out.println("real path: " + context.getRealPath("/index.jsp"));
-		
-		RequestDispatcher requestDispatcher =  context.getRequestDispatcher("/test");
-		
+		System.out.println("servlet path: " + req.getServletPath());
 		System.out.println();
+	}
+	
+	private String getRemainingPath(String requestUri, String mapping, boolean ignoreCase) {
+		int index1 = 0;
+		int index2 = 0;
+		for (; (index1 < requestUri.length()) && (index2 < mapping.length()); index1++, index2++) {
+			char c1 = requestUri.charAt(index1);
+			char c2 = mapping.charAt(index2);
+			if (c1 == ';') {
+				index1 = requestUri.indexOf('/', index1);
+				if (index1 == -1) {
+					return null;
+				}
+				c1 = requestUri.charAt(index1);
+			}
+			if (c1 == c2) {
+				continue;
+			}
+			else if (ignoreCase && (Character.toLowerCase(c1) == Character.toLowerCase(c2))) {
+				continue;
+			}
+			return null;
+		}
+		if (index2 != mapping.length()) {
+			return null;
+		}
+		else if (index1 == requestUri.length()) {
+			return "";
+		}
+		else if (requestUri.charAt(index1) == ';') {
+			index1 = requestUri.indexOf('/', index1);
+		}
+		return (index1 != -1 ? requestUri.substring(index1) : "");
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest,
-	 * javax.servlet.http.HttpServletResponse)
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.
+	 * HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
