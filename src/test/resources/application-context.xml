@@ -15,9 +15,18 @@
 
 
 
-	<context:component-scan base-package="com.chengmaoning.jroad" />
-
-	<aop:aspectj-autoproxy />
+<!-- 	<context:component-scan base-package="com.chengmaoning.jroad" />
+ -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<bean id="targetClass" class="com.chengmaoning.jroad.aop.TargetClass"></bean>
+	<bean id="aspectClass" class="com.chengmaoning.jroad.aop.AspectClass"/>
+	<aop:config>
+		<aop:aspect ref="aspectClass" id="aspect">
+			<aop:pointcut id="pointcut" expression="execution(* com.chengmaoning.jroad.aop.TargetInterface.addUser(..)) and args(first, second)"></aop:pointcut>
+			<aop:after method="afterReturn" pointcut-ref="pointcut" arg-names="first, second"/>
+		</aop:aspect>
+	</aop:config>
 
 	<!-- <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder> -->
 

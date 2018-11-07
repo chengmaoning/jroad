@@ -10,12 +10,18 @@ import java.net.URL;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+
+import com.googlecode.aviator.AviatorEvaluator;
 
 public class HelloWorldTest {
 
@@ -81,6 +87,15 @@ public class HelloWorldTest {
 
 		System.out.println(zonedDateTime);
 		System.out.println(zonedDateTimeFromZone);
+	}
+	
+	@Test
+	public void testAviator(){
+		Map<String, Object> env = new HashMap<>();
+		env.put("date1", "2018-09-03 14:29:18.720000");
+		
+		Date date =  (Date) AviatorEvaluator.execute("string_to_date(date1,'yyyy-MM-dd HH:mm:ss.SS')",env);
+		System.out.println(date);
 	}
 	
 
