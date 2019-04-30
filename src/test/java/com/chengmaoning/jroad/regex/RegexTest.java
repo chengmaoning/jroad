@@ -3,6 +3,7 @@
  */
 package com.chengmaoning.jroad.regex;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,13 +74,26 @@ public class RegexTest {
 		String bString = "11";
 		System.out.println(aString == bString);
 	}
-	
+
 	@Test
-	public void test4(){
+	public void test4() {
 		Object json = JSON.parse("[]");
 		System.out.println(json instanceof Map);
-		
+
 		System.out.println(json instanceof List);
+	}
+
+	@Test
+	public void test5() {
+		String string = "{&quot;UR200606000000000004-20030002-UR200606000000000004-20030002&quot;:[{";
+		System.out.println(string.replace("&quot;", "\""));
+	}
+
+	@Test
+	public void test6() {
+		System.out.println(String.format("%04d", 25));
+		System.out.println("14".matches(".*-.*"));
+//		System.out.println(Arrays.toString("F0010100000000001336-16080005".split("-")));
 	}
 
 }
