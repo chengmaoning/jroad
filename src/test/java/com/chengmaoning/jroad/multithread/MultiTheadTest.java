@@ -11,7 +11,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
