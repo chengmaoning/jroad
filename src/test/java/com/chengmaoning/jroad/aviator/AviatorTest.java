@@ -10,6 +10,8 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+import com.chengmaoning.jroad.model.TestBean;
 import com.googlecode.aviator.AviatorEvaluator;
 
 /**
@@ -75,5 +77,20 @@ public class AviatorTest {
 		Date enDate = new Date(before.getTime() + 24 * 3600);
 		System.out.println("before = " + format.format(before));
 		System.out.println("end = " + format.format(enDate));
+	}
+
+	@Test
+	public void test4() {
+		TestBean testBean = new TestBean();
+		testBean.setKey("hello");
+		testBean.setValue("world");
+
+		String name = "dennis";
+		AviatorEvaluator.execute("#testBean.value = '666'", new HashMap() {
+			{
+				put("testBean", testBean);
+			}
+		});
+		System.out.println(JSON.toJSONString(testBean, true));
 	}
 }
