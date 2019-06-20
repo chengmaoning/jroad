@@ -30,8 +30,5 @@ public class SpringframeworkTest {
 				"classpath:application-context.xml");
 		ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
 		System.out.println(beanFactory.getBeanDefinitionCount());
-		HelloService helloService = beanFactory.getBean("helloServiceImpl", HelloService.class);
-		System.out.println(helloService.testThrow(false));
-		System.out.println(Arrays.toString(beanFactory.getBeanDefinitionNames()));
 	}
 }
