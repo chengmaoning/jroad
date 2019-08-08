@@ -3,13 +3,9 @@
  */
 package com.chengmaoning.jroad.springframework;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.chengmaoning.jroad.controller.HelloService;
 
 /**
  * SpringframeworkTest.java

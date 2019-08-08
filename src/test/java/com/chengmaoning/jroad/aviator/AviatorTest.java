@@ -7,21 +7,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import java.util.Random;
-import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alibaba.fastjson.JSON;
-import com.chengmaoning.jroad.model.TestBean;
 import com.googlecode.aviator.AviatorEvaluator;
 
 /**
@@ -45,10 +39,6 @@ public class AviatorTest {
 		env.put("amount", "22.3");
 		env.put("amount2", null);
 		env.put("bizProductCheck", "face_to_face_payment");
-
-		AviatorEvaluator.addFunction(new AcceptFunction());
-
-		comparators.put("strEqual", "==");
 	}
 
 	@Test
